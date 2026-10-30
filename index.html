@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jimin Lee, mechanical engineering student at Boston University. Projects in CAD, 3D printing, mechatronics, and drone photogrammetry.">
+<meta property="og:title" content="Jimin Lee | Mechanical Engineering Portfolio">
+<meta property="og:description" content="Mechanical engineering student at Boston University. CAD, 3D printing, Arduino, and drone photogrammetry projects.">
+<meta property="og:image" content="img/sorter-photo.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E4D6B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='white' text-anchor='middle'%3EJL%3C/text%3E%3C/svg%3E">
+<style>
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Jimin Lee | Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: centered column, left label rail per section, like a well-set technical report. Projects are full case studies. */
+:root{
+  --bg:#FBFBFA; --surface:#FFFFFF; --plate:#FFFFFF; --ink:#16212B; --muted:#5B6670; --line:#E1E4E7; --accent:#1E4D6B; --accent-soft:#E7EEF3;
+  --ok:#2E7D4F; --ok-soft:#E3F1E8; --warn:#A35A00; --warn-soft:#FBEEDC; --bad:#B03A2E; --bad-soft:#F8E4E1;
+  --f-display:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1419; --surface:#161C22; --plate:#F4F5F6; --ink:#E6EAED; --muted:#98A3AD; --line:#27303A; --accent:#7FB0D3; --accent-soft:#1B2833;
+  --ok:#6CC28F; --ok-soft:#16281E; --warn:#E3A55A; --warn-soft:#2C2214; --bad:#E7877C; --bad-soft:#2E1A18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1419; --surface:#161C22; --plate:#F4F5F6; --ink:#E6EAED; --muted:#98A3AD; --line:#27303A; --accent:#7FB0D3; --accent-soft:#1B2833;
+  --ok:#6CC28F; --ok-soft:#16281E; --warn:#E3A55A; --warn-soft:#2C2214; --bad:#E7877C; --bad-soft:#2E1A18; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding-block:0 72px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3,h4{margin:0;text-wrap:balance;line-height:1.25}
+p{margin:0}
+.label{font-size:.75rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+
+/* Nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:24px;border-bottom:1px solid var(--line)}
+nav .name{font-weight:600;font-size:.95rem;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{color:var(--muted);text-decoration:none;font-size:.9rem}
+nav ul a:hover{color:var(--ink)}
+
+/* Hero */
+.hero{padding-block:64px 56px;display:grid;grid-template-columns:1fr 300px;gap:48px;border-bottom:1px solid var(--line);align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:18px;min-width:0}
+.hero h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:-.01em}
+.hero .role{font-size:1.15rem;color:var(--muted)}
+.hero .summary{font-size:1.05rem;max-width:60ch}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-flex;align-items:center;font-size:.9rem;font-weight:500;padding:10px 18px;border-radius:4px;border:1px solid var(--line);color:var(--ink);background:var(--surface);text-decoration:none;cursor:pointer;font-family:inherit;transition:border-color .15s,opacity .15s}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn.primary:hover{opacity:.9}
+.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.hero-card div{display:flex;flex-direction:column;gap:1px}
+.hero-card strong{font-weight:500;font-size:.95rem;overflow-wrap:anywhere}
+
+/* Sections */
+section{display:grid;grid-template-columns:200px 1fr;gap:32px;padding-block:56px;border-bottom:1px solid var(--line)}
+section > .side{display:flex;flex-direction:column;gap:6px}
+section > .side h2{font-family:var(--f-display);font-weight:500;font-size:1.5rem}
+section > .main{min-width:0;display:flex;flex-direction:column;gap:28px}
+section.full{display:block}
+section.full > .side{margin-bottom:28px}
+
+/* Project index */
+.pindex{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pcard{display:flex;gap:16px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--surface);text-decoration:none;color:var(--ink);transition:border-color .15s}
+.pcard:hover{border-color:var(--muted)}
+.pcard img{width:84px;height:84px;object-fit:cover;border-radius:4px;background:var(--plate);flex:none}
+.pcard div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pcard b{font-weight:600;line-height:1.3}
+
+/* Case study */
+.case{display:flex;flex-direction:column;gap:40px;padding-block:48px;border-top:1px solid var(--line)}
+.case:first-of-type{border-top:none;padding-top:8px}
+.case-head{display:flex;flex-direction:column;gap:10px;max-width:760px}
+.case-head h3{font-family:var(--f-display);font-weight:500;font-size:clamp(1.6rem,3.6vw,2.1rem)}
+.case-head .sub{font-size:1.05rem;color:var(--muted)}
+.byline{display:flex;flex-wrap:wrap;gap:6px 28px;font-size:.9rem;margin-top:4px}
+.byline div{display:flex;flex-direction:column}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.75rem;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+
+.lead{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.lead > *{min-width:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.stats div{padding:16px 18px;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line)}
+.stats div:nth-child(odd){border-right:1px solid var(--line)}
+.stats div:nth-last-child(-n+2){border-bottom:none}
+.stats b{font-family:var(--f-mono);font-weight:500;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.stats span{font-size:.82rem;color:var(--muted)}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:68ch}
+.prose ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+
+.block{display:flex;flex-direction:column;gap:16px}
+.block > h4{font-size:1.1rem;font-weight:600;display:flex;gap:10px;align-items:baseline}
+.block > h4 .label{font-weight:500}
+
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure .plate{background:var(--plate);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:12px}
+figure .plate.bleed{padding:0}
+figure img{display:block;max-width:100%;height:auto;cursor:zoom-in}
+figcaption{font-size:.82rem;color:var(--muted);max-width:70ch}
+figcaption b{color:var(--ink);font-weight:500}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid3 .plate{aspect-ratio:4/3}
+.grid3 .plate img{max-height:100%;object-fit:contain}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.step{padding:18px;display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line)}
+.step:last-child{border-right:none}
+.step .n{font-family:var(--f-mono);font-size:.78rem;color:var(--accent)}
+.step b{font-weight:600}
+.step p{font-size:.9rem;color:var(--muted)}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:.75rem;font-weight:500;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:baseline}
+
+/* Bars */
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar{display:grid;grid-template-columns:70px 1fr 64px;gap:12px;align-items:center;font-size:.9rem}
+.bar .track{height:12px;background:var(--accent-soft);border-radius:2px;position:relative}
+.bar .fill{height:100%;background:var(--accent);border-radius:2px}
+.bar .tick{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--ink);left:90%}
+.bar .v{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.bar-note{font-size:.8rem;color:var(--muted);display:flex;gap:6px;align-items:center}
+.bar-note i{display:inline-block;width:1px;height:12px;background:var(--ink)}
+
+.callout{border-left:2px solid var(--accent);padding:4px 0 4px 18px;display:flex;flex-direction:column;gap:6px;max-width:68ch}
+
+/* Education / skills / experience */
+.edu{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.edu h3{font-size:1.1rem;font-weight:600}
+.edu .when{color:var(--muted);font-size:.9rem}
+.course{display:flex;flex-direction:column;gap:10px}
+.course ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px 24px}
+.course li{font-size:.95rem;padding-left:14px;position:relative}
+.course li::before{content:"";position:absolute;left:0;top:.75em;width:5px;height:1px;background:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px}
+.skill{display:flex;flex-direction:column;gap:6px}
+.skill h3{font-size:.95rem;font-weight:600}
+.skill p{color:var(--muted);font-size:.95rem}
+.entry{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.entry:last-child{border-bottom:none;padding-bottom:0}
+.entry h3{font-size:1.02rem;font-weight:600}
+.entry .when{font-size:.85rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.entry .org{grid-column:1/-1;color:var(--muted);font-size:.93rem}
+.entry p{grid-column:1/-1;font-size:.95rem;margin-top:4px}
+
+/* Contact */
+.contact-row{display:flex;flex-direction:column;gap:18px}
+.contact-row p{max-width:58ch}
+.cline{display:grid;grid-template-columns:70px auto auto;justify-content:start;align-items:center;gap:12px}
+.cline code{font-family:var(--f-mono);font-size:1rem;background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:4px;user-select:all;overflow-wrap:anywhere}
+.cline .btn{padding:8px 14px}
+footer{padding-top:28px;font-size:.8rem;color:var(--muted)}
+
+/* Lightbox */
+dialog#lb{border:none;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh}
+dialog#lb::backdrop{background:rgba(10,14,18,.82)}
+dialog#lb img{display:block;max-width:100%;max-height:86vh;margin:0 auto;background:#fff;border-radius:4px;cursor:zoom-out}
+dialog#lb p{color:#E6EAED;font-size:.85rem;text-align:center;margin-top:10px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:28px}
+  .lead,.grid2{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(2){border-right:none}
+  .step:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:760px){
+  section{grid-template-columns:1fr;gap:20px;padding-block:44px}
+  .hero{padding-block:44px 40px}
+  .pindex,.skills,.course ul{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr 1fr}
+  nav ul{gap:18px}
+}
+@media (max-width:480px){
+  .steps{grid-template-columns:1fr}
+  .step{border-right:none;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .grid3{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .stats div{border-right:none!important;border-bottom:1px solid var(--line)!important}
+  .stats div:last-child{border-bottom:none!important}
+  .cline{grid-template-columns:1fr auto}
+  .cline .label{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="name" href="#top">Jimin Lee</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-text">
+      <span class="label">Portfolio</span>
+      <h1>Jimin Lee</h1>
+      <p class="role">Mechanical Engineering Student, Boston University</p>
+      <p class="summary">I'm a mechanical engineering undergraduate who designs, models, and builds working hardware. My projects include an Arduino-controlled candy color sorter designed in CAD and a drone photogrammetry survey of a Hudson River tidal marsh. I'm looking for engineering internship opportunities.</p>
+      <div class="links">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Profile summary">
+      <div><span class="label">Degree</span><strong>B.S. Mechanical Engineering</strong></div>
+      <div><span class="label">Expected graduation</span><strong>May 2028</strong></div>
+      <div><span class="label">Location</span><strong>Boston, MA</strong></div>
+      <div><span class="label">Email</span><strong>jimin25lee@gmail.com</strong></div>
+      <div><span class="label">Phone</span><strong>(914) 327-0981</strong></div>
+    </aside>
+  </header>
+
+  <section id="projects" class="full">
+    <div class="side"><h2>Projects</h2><span class="label">Selected work · click any figure to enlarge</span></div>
+
+    <div class="pindex">
+      <a class="pcard" href="#sorter"><img src="img/sorter-photo.webp" alt="" style="object-position:center 30%"><div><span class="label">EK210 · Spring 2026</span><b>Automated Skittles Color Sorter</b><span class="muted" style="font-size:.88rem">CAD, 3D printing, Arduino control</span></div></a>
+      <a class="pcard" href="#marsh"><img src="img/marsh-dsm.webp" alt="" style="object-position:center 40%"><div><span class="label">Columbia SSFRP · 2023</span><b>Aerial Survey of Piermont Marsh</b><span class="muted" style="font-size:.88rem">Drone photogrammetry, 3D surface model</span></div></a>
+    </div>
+
+    <!-- ============ SORTER ============ -->
+    <article class="case" id="sorter">
+      <div class="case-head">
+        <span class="label">Case study 1 · EK210 Engineering Design, Boston University</span>
+        <h3>Automated Skittles Color Sorter</h3>
+        <p class="sub">A portable device that sorts mixed Skittles into five removable color bins after the user pours them into a funnel.</p>
+        <div class="byline">
+          <div><span class="label">Term</span>Spring 2026</div>
+          <div><span class="label">Team</span>Jimin Lee, Noah Lee, Noah Sanchez, Eric Yang</div>
+          <div><span class="label">Clients</span>Prof. Ngo and Prof. Tsutsumi</div>
+        </div>
+        <div class="tags"><span class="tag">SolidWorks</span><span class="tag">FDM 3D printing (PLA)</span><span class="tag">Laser cutting</span><span class="tag">Arduino (C++)</span><span class="tag">Stepper &amp; servo control</span></div>
+      </div>
+
+      <div class="lead">
+        <figure>
+          <div class="plate"><img src="img/sorter-photo.webp" alt="Photo of the finished color sorter: funnel and LCD on top, carousel and slide in the middle, five acrylic bins with sorted Skittles at the base" width="433" height="577"></div>
+          <figcaption><b>The finished sorter</b> after a test run, with sorted candy in the bins and the LCD on top showing per-color counts.</figcaption>
+        </figure>
+        <div class="prose">
+          <div class="stats">
+            <div><b>95 / 100</b><span>Candies sorted correctly in testing</span></div>
+            <div><b>2.08 s</b><span>Average time per candy</span></div>
+            <div><b>$96.72</b><span>Total build cost (budget $250)</span></div>
+            <div><b>5</b><span>Colors sorted into removable bins</span></div>
+          </div>
+          <h4 style="font-size:1.05rem;font-weight:600;margin-top:8px">The problem</h4>
+          <p>Our clients asked for a portable, affordable, automatic device that accurately sorts and stores different colored Skittles, as a stand-in for an industrial sorting task. They ranked accuracy above everything else.</p>
+          <h4 style="font-size:1.05rem;font-weight:600">Key design decisions</h4>
+          <ul>
+            <li><b>Vertical carousel</b> to feed one candy at a time. We chose it over other concepts because it balanced single-candy throughput with mechanical simplicity.</li>
+            <li><b>Adafruit TCS34725 RGB sensor</b>, which has its own white LED, so readings stay consistent regardless of room lighting.</li>
+            <li><b>NEMA 17 stepper</b> to index the carousel in exact 90° steps, and an <b>HS-311 servo</b> to aim the slide across a 180° range.</li>
+            <li><b>16×2 LCD</b> that shows the count sorted per color, and raised bumps (1 to 5) on each bin so users with low vision can tell the bins apart.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>My role <span class="label">Mechanical design lead</span></h4>
+        <div class="grid2">
+          <div class="prose">
+            <p>I owned the mechanical side of the project, from the first model to the assembled machine.</p>
+            <ul>
+              <li><b>CAD:</b> modeled the entire device in SolidWorks, including every custom part and the full assembly.</li>
+              <li><b>Part design:</b> designed the funnel, carousel, slide, top and bottom frames, container base, and bins, plus the engineering drawings for each.</li>
+              <li><b>3D printing:</b> printed all of the PLA parts and reprinted them when fit or dimensions were off.</li>
+              <li><b>Integration:</b> built the full structure and assembled all of the mechanical and electronic parts into the working machine.</li>
+            </ul>
+            <p class="muted" style="font-size:.92rem">Teammates led the circuit design, the Arduino code, and the system-level analysis.</p>
+          </div>
+          <figure>
+            <div class="plate"><img src="img/sorter-assembly.webp" alt="CAD section view of the full color sorter assembly showing the funnel, vertical carousel, color sensor, slide, and container base" loading="lazy" style="max-height:440px;width:auto"></div>
+            <figcaption><b>My SolidWorks assembly.</b> Funnel on top, carousel and color sensor in the middle, rotating slide and five-bin base below.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>How it works</h4>
+        <div class="steps">
+          <div class="step"><span class="n">Step 1</span><b>Load</b><p>Candy poured into the 3D-printed funnel drops into one of the carousel's four pockets.</p></div>
+          <div class="step"><span class="n">Step 2</span><b>Scan</b><p>The stepper rotates the carousel 90°, placing the candy in front of the RGB sensor.</p></div>
+          <div class="step"><span class="n">Step 3</span><b>Aim</b><p>The Arduino classifies the color and turns the servo slide to that bin's angle.</p></div>
+          <div class="step"><span class="n">Step 4</span><b>Drop</b><p>Another 90° turn releases the candy down the slide while the next one is scanned. The machine stops after 8 empty rotations.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>Design process</h4>
+        <div class="prose">
+          <p>We defined objectives with the clients, then ranked them with a pairwise comparison chart. Color detection and sorting accuracy came out on top, followed by cost. We used a morph chart to compare ways to accept candy, detect color, sort, store, and power the device, and a glass-box analysis to map the functions between input and output.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>Design evolution <span class="label">Why we rebuilt it</span></h4>
+        <div class="grid2">
+          <figure><div class="plate"><img src="img/sorter-v1-render.webp" alt="SolidWorks render of the original design: a funnel over a box of angled blocks feeding vertical color columns" loading="lazy"></div><figcaption><b>Original design (v1).</b> Candy fell through rows of angled blocks that servos tilted to steer it into one of several vertical columns.</figcaption></figure>
+          <figure><div class="plate"><img src="img/sorter-v1-drawing.webp" alt="SolidWorks drawing sheet of the original color sorter housing with dimensions" loading="lazy"></div><figcaption><b>v1 drawing sheet.</b> Housing made of three components: funnel, main body, and storage area.</figcaption></figure>
+        </div>
+        <div class="prose">
+          <p>Our first detailed design used three servo motors. One pushed each candy out, and two more moved sets of blocks at the same time to steer it into the right color column. Once we started building, it ran into three problems:</p>
+          <ul>
+            <li><b>Too many motors.</b> Three servos meant more wiring, more power draw, more parts to keep in sync, and more places for the machine to fail.</li>
+            <li><b>Too slow.</b> Every candy had to wait for several servos to finish moving before the next one could drop.</li>
+            <li><b>Wrong candy dimensions.</b> After finishing the sketch we found our Skittle measurements were off, so the channels in the housing would not have worked with real candy.</li>
+          </ul>
+          <p>We replaced the whole mechanism with a vertical carousel that feeds one candy at a time and a single rotating slide that aims it at the right bin. That cut the drive system to <b>one stepper and one servo</b>, let scanning and dropping happen in the same rotation, and gave a simpler structure to model and print. I redesigned the parts around the new layout with a ±1.5 mm tolerance.</p>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th></th><th>Original design (v1)</th><th>Final design</th></tr></thead>
+            <tbody>
+              <tr><td>Motors</td><td>3 servos</td><td>1 NEMA 17 stepper + 1 servo</td></tr>
+              <tr><td>Feeding</td><td>Gravity through fixed guide blocks</td><td>4-pocket carousel, one candy per 90°</td></tr>
+              <tr><td>Sorting</td><td>Servo-tilted blocks steer candy into columns</td><td>Slide rotates to one of 5 bin angles</td></tr>
+              <tr><td>Storage</td><td>Fixed columns inside the housing</td><td>Removable acrylic bins on a printed base</td></tr>
+              <tr><td>Throughput</td><td>One candy waits on several servo moves</td><td>Next candy scans while the last one drops</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure><div class="plate"><img src="img/sorter-v2-sketch.webp" alt="Dimensioned sketch of the redesigned funnel, carousel, and semicircular container layout" loading="lazy"></div><figcaption><b>Redesign sketch.</b> Funnel, 360° carousel, 180° slide rotation, and five containers on a semicircular base.</figcaption></figure>
+      </div>
+
+      <div class="block">
+        <h4>Final part design</h4>
+        <div class="prose">
+          <p>The final build combines 3D-printed PLA parts (funnel, carousel, slide, frames, container base) with laser-cut MDF back plates and acrylic bins. Several printed parts went through multiple revisions after dimensions came out wrong in the first prints.</p>
+        </div>
+        <div class="grid3">
+          <figure><div class="plate"><img src="img/sorter-carousel.webp" alt="Dimensioned drawing and render of the carousel housing and four-pocket rotor" loading="lazy"></div><figcaption><b>Carousel.</b> Housing and four-pocket rotor that indexes one candy per 90°.</figcaption></figure>
+          <figure><div class="plate"><img src="img/sorter-funnel.webp" alt="Dimensioned drawing and render of the funnel" loading="lazy"></div><figcaption><b>Funnel.</b> 5.000 in. wide, narrowing to a single-candy outlet.</figcaption></figure>
+          <figure><div class="plate"><img src="img/sorter-slide.webp" alt="Dimensioned drawing and render of the angled slide and its mount" loading="lazy"></div><figcaption><b>Slide.</b> 30° chute on a servo mount that swings it across the bins.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>Electronics and control</h4>
+        <div class="grid2">
+          <figure><div class="plate"><img src="img/sorter-wiring.webp" alt="Wiring diagram: Arduino Uno, TCS34725 sensor, stepper driver, NEMA 17 stepper, servo, LCD, and 9V batteries" loading="lazy"></div><figcaption><b>Wiring.</b> Arduino Uno, TCS34725 sensor, stepper driver and NEMA 17 motor, HS-311 servo, LCD, and 9V battery power.</figcaption></figure>
+          <figure><div class="plate"><img src="img/sorter-flow.webp" alt="Code flowchart: check for candy, rotate stepper, read color, move servo to the color position, repeat" loading="lazy"></div><figcaption><b>Control logic.</b> Each color maps to a servo angle: red 75°, orange 100°, yellow 120°, green 145°, purple 175°.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>Prototype testing <span class="label">Mid-project checkpoint</span></h4>
+        <div class="grid2">
+          <div class="prose">
+            <p>Before the final build, we tested the sensor and the slide separately on a prototype.</p>
+            <ul>
+              <li><b>Sensor test:</b> held Skittles against the sensor for 1 second each. The reading matched the true color in all 4 recorded trials.</li>
+              <li><b>Rotation test:</b> held each color to the sensor and checked whether the slide turned to the right bin. Red, orange, yellow, and green passed 4 of 4 trials. <b>Purple failed all 4.</b></li>
+            </ul>
+            <p>Purple became the focus of troubleshooting going into the final build. In final testing it sorted correctly 17 of 20 times.</p>
+          </div>
+          <div class="tbl-wrap">
+            <table style="min-width:340px">
+              <thead><tr><th>Color</th><th>T1</th><th>T2</th><th>T3</th><th>T4</th></tr></thead>
+              <tbody>
+                <tr><td><span class="sw" style="background:#D7263D"></span>Red</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td></tr>
+                <tr><td><span class="sw" style="background:#E8C619"></span>Yellow</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td></tr>
+                <tr><td><span class="sw" style="background:#F08A24"></span>Orange</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td></tr>
+                <tr><td><span class="sw" style="background:#2BA84A"></span>Green</td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td><td><span class="pill ok">Pass</span></td></tr>
+                <tr><td><span class="sw" style="background:#7B3FA0"></span>Purple</td><td><span class="pill bad">Fail</span></td><td><span class="pill bad">Fail</span></td><td><span class="pill bad">Fail</span></td><td><span class="pill bad">Fail</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <figure><div class="plate" style="background:#111;padding:8px"><img src="img/sorter-serial.webp" alt="Serial monitor output showing raw R, G, B values, hue, and the classified color for two candies" loading="lazy"></div><figcaption><b>Raw sensor output.</b> The Arduino reads R, G, and B values, converts them to hue, and classifies the color. A purple Skittle read as hue 12.11 and a green one as hue 104.64.</figcaption></figure>
+      </div>
+
+      <div class="block">
+        <h4>Final testing and results</h4>
+        <div class="grid2">
+          <div class="prose" style="gap:14px">
+            <span class="label">Correct sorts per color (20 candies each)</span>
+            <div class="bars" role="img" aria-label="Red 20 of 20, orange 18 of 20, yellow 20 of 20, green 20 of 20, purple 17 of 20">
+              <div class="bar"><span><span class="sw" style="background:#D7263D"></span>Red</span><div class="track"><div class="fill" style="width:100%"></div><span class="tick"></span></div><span class="v">20/20</span></div>
+              <div class="bar"><span><span class="sw" style="background:#F08A24"></span>Orange</span><div class="track"><div class="fill" style="width:90%"></div><span class="tick"></span></div><span class="v">18/20</span></div>
+              <div class="bar"><span><span class="sw" style="background:#E8C619"></span>Yellow</span><div class="track"><div class="fill" style="width:100%"></div><span class="tick"></span></div><span class="v">20/20</span></div>
+              <div class="bar"><span><span class="sw" style="background:#2BA84A"></span>Green</span><div class="track"><div class="fill" style="width:100%"></div><span class="tick"></span></div><span class="v">20/20</span></div>
+              <div class="bar"><span><span class="sw" style="background:#7B3FA0"></span>Purple</span><div class="track"><div class="fill" style="width:85%"></div><span class="tick"></span></div><span class="v">17/20</span></div>
+            </div>
+            <span class="bar-note"><i></i>Target: 90% accuracy</span>
+            <p class="muted" style="font-size:.92rem">All five misses came from orange and purple. Red, yellow, and green sorted perfectly.</p>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Requirement</th><th>Target</th><th>Result</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Accuracy</td><td class="num">≥ 90%</td><td class="num">95%</td><td><span class="pill ok">Met</span></td></tr>
+                <tr><td>Speed</td><td class="num">2 s / candy</td><td class="num">2.08 s</td><td><span class="pill warn">Close</span></td></tr>
+                <tr><td>Cost</td><td class="num">&lt; $250</td><td class="num">$96.72</td><td><span class="pill ok">Met</span></td></tr>
+                <tr><td>Runtime</td><td class="num">≥ 10 min</td><td class="num">5 min</td><td><span class="pill bad">Not met</span></td></tr>
+                <tr><td>Durability</td><td>6 in. drop</td><td>Wiring loosened</td><td><span class="pill bad">Not met</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="label">What I'd change next</span>
+        <p>The power budget shows the stepper and its driver use most of the 67.88 W total, which explains the short battery life. Next time I would swap the stepper for a continuous-rotation servo, stiffen the frame, and enclose the wiring so it survives the drop test.</p>
+        <p class="muted">The project also taught our team to plan for reprints and failed parts, and to troubleshoot quickly when components shorted or stopped responding.</p>
+      </div>
+    </article>
+
+    <!-- ============ MARSH ============ -->
+    <article class="case" id="marsh">
+      <div class="case-head">
+        <span class="label">Case study 2 · Columbia University Secondary School Field Research Program</span>
+        <h3>Unmanned Aerial Survey of Piermont Marsh</h3>
+        <p class="sub">A high-resolution digital surface model of a Hudson River tidal salt marsh, built with drone photogrammetry.</p>
+        <div class="byline">
+          <div><span class="label">Year</span>2023</div>
+          <div><span class="label">Team</span>Chanry Chen, Jimin Lee, Karen Ringler, Jaden Cermak-Hosein, Nick Frearson</div>
+          <div><span class="label">Host</span>Lamont-Doherty Earth Observatory</div>
+        </div>
+        <div class="tags"><span class="tag">Drone piloting</span><span class="tag">DroneDeploy</span><span class="tag">Agisoft Metashape Pro</span><span class="tag">Photogrammetry</span><span class="tag">Field research</span></div>
+      </div>
+
+      <div class="lead">
+        <figure>
+          <div class="plate bleed" style="background:var(--surface)"><img src="img/marsh-dsm.webp" alt="Hillshaded digital surface model of Piermont Marsh colored by elevation, with tidal creeks visible" width="900" height="1303"></div>
+          <figcaption><b>Hillshaded digital surface model of Piermont Marsh</b>, colored by relative elevation (red is high, blue is low).</figcaption>
+        </figure>
+        <div class="prose">
+          <div class="stats">
+            <div><b>4.89 cm</b><span>Model resolution per pixel</span></div>
+            <div><b>1,000+</b><span>Aerial images captured</span></div>
+            <div><b>100 m</b><span>Survey altitude</span></div>
+            <div><b>75 / 70%</b><span>Front / side image overlap</span></div>
+          </div>
+          <h4 style="font-size:1.05rem;font-weight:600;margin-top:8px">Why it matters</h4>
+          <p>Piermont Marsh protects the Hudson's western shore from storm surge and filters contaminants. Rising seas, erosion, and invasive <i>Phragmites australis</i> are changing it quickly. Existing aerial data was low resolution, and past ground surveys were incomplete because the soft surface made them slow and difficult.</p>
+          <h4 style="font-size:1.05rem;font-weight:600">My role</h4>
+          <ul>
+            <li>Piloted the DJI Phantom 4 Pro on automated grid surveys planned in DroneDeploy, with the camera pointed straight down (90°).</li>
+            <li>Processed the image set in Agisoft Metashape Pro into the digital surface model.</li>
+            <li>Co-authored the research poster presenting the results.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>Methods</h4>
+        <div class="grid2">
+          <figure><div class="plate bleed"><img src="img/marsh-location.webp" alt="Map of the lower Hudson River showing the survey area at Piermont" loading="lazy"></div><figcaption><b>Survey location</b> on the western bank of the Hudson, south of the Tappan Zee crossing.</figcaption></figure>
+          <figure><div class="plate bleed" style="max-height:340px"><img src="img/marsh-flightplan.webp" alt="DroneDeploy flight plan showing a grid of flight lines over the marsh" loading="lazy" style="max-height:340px;width:auto"></div><figcaption><b>Automated flight plan</b> in DroneDeploy: parallel grid lines for even image overlap.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>Findings</h4>
+        <figure><div class="plate bleed" style="background:var(--surface)"><img src="img/marsh-dsm-wide.webp" alt="Close-up of the surface model showing meandering creeks with higher vegetation along their banks" loading="lazy"></div><figcaption><b>Detail of the model.</b> Canopy height increases along creek banks closer to Tallman Mountain.</figcaption></figure>
+        <div class="grid2">
+          <figure><div class="plate bleed"><img src="img/marsh-transect.webp" alt="Elevation profile along a 194 m transect, showing a dip at the creek followed by a sharp peak" loading="lazy"></div><figcaption><b>194 m elevation transect</b> south through a tidal creek. The sharp rise just past the channel suggests a natural levee.</figcaption></figure>
+          <div class="prose">
+            <ul>
+              <li>Vegetation canopy is taller along creek banks near Tallman Mountain and gets shorter toward the river. Possible causes include more sediment and nutrient deposition near the mountain, or lower salinity there.</li>
+              <li>A transect through Tidal Creek shows a raised bank beside the channel that may be a levee.</li>
+              <li>Relative elevations are highly accurate. Absolute elevations are not, because the survey had no ground-truthed control points.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="label">Future work</span>
+        <p>Install permanent ground control points to measure absolute elevation change over time, resurvey with LiDAR to separate bare ground from the canopy, and fly monthly surveys to study the marsh's annual growth cycle.</p>
+      </div>
+    </article>
+  </section>
+
+  <section id="education">
+    <div class="side"><h2>Education</h2></div>
+    <div class="main">
+      <div class="edu">
+        <div><h3>Boston University, College of Engineering</h3><p>B.S. Mechanical Engineering</p></div>
+        <span class="when">Expected May 2028</span>
+      </div>
+      <div class="course">
+        <span class="label">Relevant coursework</span>
+        <ul>
+          <li>Mechanics</li><li>Machine Components &amp; CAD Design</li>
+          <li>Thermodynamics</li><li>Materials Science</li>
+          <li>Manufacturing Processes</li><li>Circuits</li>
+          <li>Differential Equations</li><li>Probability, Statistics &amp; Data Science</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="side"><h2>Skills</h2></div>
+    <div class="main">
+      <div class="skills">
+        <div class="skill"><h3>CAD &amp; Fabrication</h3><p>SolidWorks, Onshape, FDM 3D printing, laser cutting, engineering drawings</p></div>
+        <div class="skill"><h3>Programming &amp; Electronics</h3><p>Arduino (C++), Python, JavaScript, circuit prototyping, stepper and servo control</p></div>
+        <div class="skill"><h3>Survey &amp; Imaging</h3><p>Drone operation, DroneDeploy, Agisoft Metashape Pro photogrammetry</p></div>
+        <div class="skill"><h3>Other</h3><p>Audio and sound systems, Microsoft Office</p></div>
+        <div class="skill"><h3>Languages</h3><p>English, Korean (fluent), Spanish (intermediate)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="side"><h2>Experience</h2><span class="label">Work &amp; leadership</span></div>
+    <div class="main">
+      <div class="entry"><h3>Library Assistant</h3><span class="when">Sep 2025 – Present</span><span class="org">Mugar Memorial Library, Boston University</span><p>Assist students and staff at the library service desk.</p></div>
+      <div class="entry"><h3>Sound Engineer &amp; Worship Leader</h3><span class="when">Apr 2025 – Present</span><span class="org">CityLife Presbyterian Church of Boston</span><p>Run sound, camera, and presentation systems for weekly services.</p></div>
+      <div class="entry"><h3>Sound Systems Engineer</h3><span class="when">Sep 2024 – Present</span><span class="org">Soon Movement</span></div>
+      <div class="entry"><h3>Captain, JV Basketball</h3><span class="when">2021 – 2022</span><span class="org">High School of Telecommunications Arts &amp; Technology</span></div>
+    </div>
+  </section>
+
+  <section id="honors">
+    <div class="side"><h2>Honors</h2></div>
+    <div class="main">
+      <div class="entry"><h3>W!se Foundation Quality of Life Award</h3><span class="when">2024</span><span class="org">Runner-up and scholarship recipient</span></div>
+      <div class="entry"><h3>QuestBridge Finalist</h3><span class="when">2023</span></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="side"><h2>Contact</h2></div>
+    <div class="main contact-row">
+      <p>I'm open to internship and research opportunities in mechanical design, prototyping, and manufacturing.</p>
+      <div class="cline"><span class="label">Email</span><code id="email">jimin25lee@gmail.com</code><button class="btn copy" type="button" data-target="email">Copy</button></div>
+      <div class="cline"><span class="label">Phone</span><code id="phone">(914) 327-0981</code><button class="btn copy" type="button" data-target="phone">Copy</button></div>
+    </div>
+  </section>
+
+  <footer>© 2026 Jimin Lee</footer>
+</div>
+
+<dialog id="lb" aria-label="Enlarged figure"><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target);
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)}
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+    try{navigator.clipboard.writeText(el.textContent).then(done,sel)}catch(e){sel()}
+  });
+});
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  if(!lb.showModal)return;
+  document.querySelectorAll('figure img').forEach(function(i){
+    i.addEventListener('click',function(){
+      img.src=i.src;img.alt=i.alt;
+      var fc=i.closest('figure').querySelector('figcaption');cap.textContent=fc?fc.textContent:'';
+      lb.showModal();
+    });
+  });
+  lb.addEventListener('click',function(){lb.close()});
+})();
+</script>
+
+</body>
+</html>
